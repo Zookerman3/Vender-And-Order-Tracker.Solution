@@ -6,9 +6,13 @@ using System;
 namespace Tracker.Tests
 {
     [TestClass]
-    public class OrderTests
+    public class OrderTests : IDisposable
     {
 
+        public void Dispose()
+        {
+            Order.ClearAll();
+        }
         [TestMethod]
         public void OrderConstructor_CreatesInstanceOfOrder_Order()
         {
@@ -32,7 +36,7 @@ namespace Tracker.Tests
             Assert.AreEqual(title, result);
         }
         [TestMethod]
-        public void SetDescription_SetDescription_String()
+        public void SetTitle_SetTitle_String()
         {
             //Arrange
             string title = "Pastries";
@@ -48,6 +52,42 @@ namespace Tracker.Tests
 
             //Assert
             Assert.AreEqual(updatedTitle, result);
+        }
+        [TestMethod]
+        public void GetAll_ReturnsEmptyList_OrderList()
+        {
+            // Arrange
+            List<Order> newList = new List<Order> { };
+
+            // Act
+            List<Order> result = Order.GetAll();
+
+            // Assert
+            CollectionAssert.AreEqual(newList, result);
+        }
+        [TestMethod]
+        public void GetAll_ReturnsOrders_OrderList()
+        {
+            //Arrange
+            string title1 = "Pastries";
+            string description1 = "Pastries for bakery";
+            float price1 = 3;
+            string date1 = "date";
+
+            string title2 = "Bread";
+            string description2 = "Bread for bakery";
+            float price2 = 4;
+            string date2 = "time";
+
+            Order newOrder1 = new Order(title1, description1, price1, date1);
+            Order newOrder2 = new Order(title2, description2, price2, date2);
+            List<Order> newList = new List<Order> { newOrder1, newOrder2 };
+
+            //Act
+            List<Order> result = Order.GetAll();
+
+            //Assert
+            CollectionAssert.AreEqual(newList, result);
         }
     }
 }

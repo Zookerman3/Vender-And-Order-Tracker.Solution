@@ -71,7 +71,7 @@ namespace Tracker.Tests
         [TestMethod]
         public void Find_ReturnsCorrectVendor_Vendor()
         {
-           //Arrange
+            //Arrange
             string name01 = "Bakery";
             string name02 = "Cafe";
             string description1 = "5thStreet";
@@ -84,6 +84,27 @@ namespace Tracker.Tests
 
             //Assert
             Assert.AreEqual(newVendor2, result);
+        }
+        [TestMethod]
+        public void AddOrder_AssociatesOrderWithVendor_OrderList()
+        {
+            //Arrange
+            string title1 = "Pastries";
+            string description1 = "Pastries for bakery";
+            float price1 = 3;
+            string date1 = "date";
+            Order newOrder = new Order(title1, description1, price1, date1);
+            List<Order> newList = new List<Order> { newOrder };
+            string name = "Bakery";
+            string description = "Bakery needs pastries";
+            Vendor newVendor = new Vendor(name, description);
+            newVendor.AddOrder(newOrder);
+
+            //Act
+            List<Order> result = newVendor.Orders;
+
+            //Assert
+            CollectionAssert.AreEqual(newList, result);
         }
     }
 }
