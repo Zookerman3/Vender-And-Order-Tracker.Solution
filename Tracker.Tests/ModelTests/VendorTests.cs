@@ -15,7 +15,7 @@ namespace Tracker.Tests
         [TestMethod]
         public void VendorConstructor_CreatesInstanceOfVendor_Vendor()
         {
-            Vendor newVendor = new Vendor("test vendor");
+            Vendor newVendor = new Vendor("test vendor", "test");
             Assert.AreEqual(typeof(Vendor), newVendor.GetType());
         }
 
@@ -24,7 +24,8 @@ namespace Tracker.Tests
         {
             //Arrange
             string name = "Test Vendor";
-            Vendor newVendor = new Vendor(name);
+            string description = "Test Description";
+            Vendor newVendor = new Vendor(name, description);
 
             //Act
             string result = newVendor.Name;
@@ -39,7 +40,8 @@ namespace Tracker.Tests
         {
             //Arrange
             string name = "Test Vendor";
-            Vendor newVendor = new Vendor(name);
+            string description = "Test Description";
+            Vendor newVendor = new Vendor(name, description);
 
             //Act
             int result = newVendor.Id;
@@ -54,8 +56,10 @@ namespace Tracker.Tests
             //Arrange
             string name01 = "Bakery";
             string name02 = "Cafe";
-            Vendor newVendor1 = new Vendor(name01);
-            Vendor newVendor2 = new Vendor(name02);
+            string description1 = "5thStreet";
+            string description2 = "6thStreet";
+            Vendor newVendor1 = new Vendor(name01, description1);
+            Vendor newVendor2 = new Vendor(name02, description2);
             List<Vendor> newList = new List<Vendor> { newVendor1, newVendor2 };
 
             //Act
@@ -70,8 +74,10 @@ namespace Tracker.Tests
            //Arrange
             string name01 = "Bakery";
             string name02 = "Cafe";
-            Vendor newVendor1 = new Vendor(name01);
-            Vendor newVendor2 = new Vendor(name02);
+            string description1 = "5thStreet";
+            string description2 = "6thStreet";
+            Vendor newVendor1 = new Vendor(name01, description1);
+            Vendor newVendor2 = new Vendor(name02, description2);
 
             //Act
             Vendor result = Vendor.Find(2);
