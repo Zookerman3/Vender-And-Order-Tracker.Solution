@@ -12,36 +12,42 @@ namespace Tracker.Tests
         [TestMethod]
         public void OrderConstructor_CreatesInstanceOfOrder_Order()
         {
-            Order newOrder = new Order("order");
+            Order newOrder = new Order("order", "description", 3, "date");
             Assert.AreEqual(typeof(Order), newOrder.GetType());
         }
         [TestMethod]
-        public void GetDescription_ReturnsDescription_String()
+        public void GetTitle_ReturnsTitle_String()
         {
             //Arrange
-            string description = "Pastries";
+            string title = "Pastries";
+            string description = "Pastries for bakery";
+            float price = 3;
+            string date = "date";
 
             //Act
-            Order newOrder = new Order(description);
-            string result = newOrder.Description;
+            Order newOrder = new Order(title, description, price, date);
+            string result = newOrder.Title;
 
             //Assert
-            Assert.AreEqual(description, result);
+            Assert.AreEqual(title, result);
         }
         [TestMethod]
         public void SetDescription_SetDescription_String()
         {
             //Arrange
-            string description = "Pastries.";
-            Order newOrder = new Order(description);
+            string title = "Pastries";
+            string description = "Pastries for bakery";
+            float price = 3;
+            string date = "date";
+            Order newOrder = new Order(title, description, price, date);
 
             //Act
-            string updatedDescription = "Bread";
-            newOrder.Description = updatedDescription;
-            string result = newOrder.Description;
+            string updatedTitle = "Bread";
+            newOrder.Title = updatedTitle;
+            string result = newOrder.Title;
 
             //Assert
-            Assert.AreEqual(updatedDescription, result);
+            Assert.AreEqual(updatedTitle, result);
         }
     }
 }
