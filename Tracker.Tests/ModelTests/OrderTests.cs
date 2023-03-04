@@ -38,7 +38,7 @@ namespace Tracker.Tests
         [TestMethod]
         public void SetTitle_SetTitle_String()
         {
-            //Arrange
+            //Arrange    
             string title = "Pastries";
             string description = "Pastries for bakery";
             float price = 3;
